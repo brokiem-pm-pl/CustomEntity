@@ -15,4 +15,6 @@ class CustomVillager extends BaseNPC /* Make sure your entity class extends to \
     public $width = 0.6;
 
     protected $gravity = 0.1; // u can edit anything here
+
+    // free to want any code here, e.g onUpdate(), etc.
 }

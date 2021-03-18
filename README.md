@@ -19,7 +19,13 @@ public function onEnable(): void {
 }
 ```
 
-On your Entity Class plugin<br>
+Add depend on your plugin.yml file<br>
+
+```yaml
+depend: [ "SimpleNPC" ] # add depend
+```
+
+On your Entity Class file<br>
 
 ```php
 <?php
@@ -40,5 +46,6 @@ class CustomVillager extends BaseNPC /* Make sure your entity class extends to \
 <br>
 
 <b>And done! now just spawn the entity with the
-command ```/snpc spawn <entityName|saveName> <nametag|null> <canWalk|false> <skinUrl|null>```/b>
+command ```/snpc spawn <entityName|saveName> <nametag|null> <canWalk|false> <skinUrl|null>```
+<br>
 <img src="https://github.com/brokiem/CustomEntity/blob/master/assets/img.png" alt="">
