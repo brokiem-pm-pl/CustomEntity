@@ -7,15 +7,20 @@ On your Main Class plugin<br>
 ```php
 <?php
 
+namespace your\namespace;
 use brokiem\snpc\SimpleNPC;
-use MyCustomEntity\CustomVillager;
+use pocketmine\plugin\PluginBase;
 
-public function onEnable(): void {
-    $entityName = "villager"; // this is used when using the SimpleNPC spawn command
-    $force = false; // force register, if your entity not registered,  use true
-    $saveNames = ["minecraft:villager"]; // save name (array)
-    SimpleNPC::registerEntity(CustomVillager::class, $entityName, $force, $saveNames); // register the entity to SimpleNPC
-    // NOTE: Use SimpleNPC::registerEntity();! NOT Entity::registerEntity();
+class Main extends PluginBase
+{
+    public function onEnable(): void
+    {
+        $entityName = "villager"; // this is used when using the SimpleNPC spawn command
+        $force = false; // force register, if your entity not registered,  use true
+        $saveNames = ["minecraft:villager"]; // save name (array)
+        SimpleNPC::registerEntity(CustomVillager::class, $entityName, $force, $saveNames); // register the entity to SimpleNPC
+        // NOTE: Use SimpleNPC::registerEntity();! NOT Entity::registerEntity();
+    }
 }
 ```
 
@@ -30,6 +35,7 @@ On your Entity Class file<br>
 ```php
 <?php
 
+namespace your\namespace;
 use brokiem\snpc\entity\BaseNPC;
 use pocketmine\entity\Entity;
 
@@ -40,6 +46,8 @@ class CustomVillager extends BaseNPC /* Make sure your entity class extends to \
     public $height = 1.95; // don't forget to add height and width
     public $width = 0.6;
     protected $gravity = 0.1; // u can edit anything here
+
+    // free to want any code here, e.g onUpdate(), etc.
 }
 ```
 
