@@ -9,7 +9,7 @@ use pocketmine\entity\Entity;
 
 class CustomVillager extends BaseNPC /* Make sure your entity class extends to \brokiem\snpc\entity\BaseNPC */
 {
-    public const NETWORK_ID = Entity::VILLAGER; // Don't forget to add the network id of the entity
+    public const SNPC_ENTITY_ID = Entity::VILLAGER; // Don't forget to add the network id of the entity
 
     public $height = 1.95; // don't forget to add height and width
     public $width = 0.6;

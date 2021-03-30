@@ -15,7 +15,7 @@ class Main extends PluginBase
 {
     public function onEnable(): void
     {
-        $entityName = "villager"; // this is used when using the SimpleNPC spawn command
+        $entityName = "villager_npc"; // this is used when using the SimpleNPC spawn command
         $force = false; // force register, if your entity not registered,  use true
         $saveNames = ["minecraft:villager"]; // save name (array)
         SimpleNPC::registerEntity(CustomVillager::class, $entityName, $force, $saveNames); // register the entity to SimpleNPC
@@ -41,7 +41,7 @@ use pocketmine\entity\Entity;
 
 class CustomVillager extends BaseNPC /* Make sure your entity class extends to \brokiem\snpc\entity\BaseNPC */
 {
-    public const NETWORK_ID = Entity::VILLAGER; // Don't forget to add the network id of the entity
+    public const SNPC_ENTITY_ID = Entity::VILLAGER; // Don't forget to add the network id of the entity
 
     public $height = 1.95; // don't forget to add height and width
     public $width = 0.6;
