@@ -15,7 +15,7 @@ class Main extends PluginBase
 {
     public function onEnable(): void
     {
-        $entityName = "villager_npc"; // this is used when using the SimpleNPC spawn command
+        $entityName = "villager_snpc"; // this is used when using the SimpleNPC spawn command. NOTE (must add _snpc)
         $force = false; // force register, if your entity not registered,  use true
         $saveNames = ["minecraft:villager"]; // save name (array)
         SimpleNPC::registerEntity(CustomVillager::class, $entityName, $force, $saveNames); // register the entity to SimpleNPC
