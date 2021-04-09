@@ -9,11 +9,8 @@ use brokiem\snpc\manager\emote\EmoteIds;
 use pocketmine\network\mcpe\protocol\EmotePacket;
 use pocketmine\Server;
 
-class MyHuman extends CustomHuman /* Make sure your entity class extends to \brokiem\snpc\entity\BaseNPC */
+class MyHuman extends CustomHuman
 {
-
-    public $height = 1.95; // don't forget to add height and width
-
     protected $gravity = 0; // u can edit anything here
     /** @var float */
     private $lastEmote;
