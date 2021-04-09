@@ -17,7 +17,7 @@ class Main extends PluginBase
     {
         $entityName = "villager_snpc"; // this is used when using the SimpleNPC spawn command. NOTE (must add _snpc)
         $force = false; // force register, if your entity not registered,  use true
-        $saveNames = ["minecraft:villager"]; // save name (array)
+        $saveNames = ["customnpc:villager"]; // save name (array)
         SimpleNPC::registerEntity(CustomVillager::class, $entityName, $force, $saveNames); // register the entity to SimpleNPC
         // NOTE: Use SimpleNPC::registerEntity();! NOT Entity::registerEntity();
     }
@@ -38,6 +38,9 @@ On your Entity Class file<br>
 namespace your\namespace;
 use brokiem\snpc\entity\BaseNPC;
 use pocketmine\entity\Entity;
+use brokiem\snpc\manager\emote\EmoteIds;
+use pocketmine\network\mcpe\protocol\EmotePacket;
+use pocketmine\Server;
 
 class CustomVillager extends BaseNPC /* Make sure your entity class extends to \brokiem\snpc\entity\BaseNPC */
 {
@@ -46,8 +49,24 @@ class CustomVillager extends BaseNPC /* Make sure your entity class extends to \
     public $height = 1.95; // don't forget to add height and width
     public $width = 0.6;
     protected $gravity = 0.1; // u can edit anything here
+    /** @var float */
+    private $lastEmote = 5.0;
 
     // free to want any code here, e.g onUpdate(), etc.
+    
+    // THIS IS HOW TO ADD EMOTE TO YOUR NPC (ONLY HUMAN NPC)
+    public function onUpdate(int $currentTick): bool{
+        if((5.0 + $this->lastEmote) > microtime(true)){
+            return parent::onUpdate($currentTick);
+        }
+
+        $this->lastEmote = microtime(true);
+
+        $pk = EmotePacket::create($this->getId(), EmoteIds::THE_HAMMER, 0);
+        Server::getInstance()->broadcastPacket($this->getViewers(), $pk);
+
+        return parent::onUpdate($currentTick);
+    }
 }
 ```
 
